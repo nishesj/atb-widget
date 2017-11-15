@@ -1,0 +1,4 @@
+/* Display name and description for this extension. */
+"CFBundleDisplayName" = "ATB WIDGET";
+"com.apple.notificationcenter.widget.description" = "ATB widget for quick bustop lookup";
+

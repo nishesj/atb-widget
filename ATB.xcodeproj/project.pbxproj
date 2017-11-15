@@ -7,13 +7,51 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A32CDF4D1FBB867600B6A49B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A32CDF4C1FBB865E00B6A49B /* CoreLocation.framework */; };
+		A32CDF4E1FBB87ED00B6A49B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B9805C1FB87D550016713B /* NotificationCenter.framework */; };
+		A32CDF4F1FBB87F500B6A49B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A32CDF4C1FBB865E00B6A49B /* CoreLocation.framework */; };
 		A3B980471FB87D290016713B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B980461FB87D290016713B /* AppDelegate.swift */; };
 		A3B980491FB87D290016713B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B980481FB87D290016713B /* ViewController.swift */; };
 		A3B9804B1FB87D290016713B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3B9804A1FB87D290016713B /* Assets.xcassets */; };
 		A3B9804E1FB87D290016713B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3B9804C1FB87D290016713B /* Main.storyboard */; };
+		A3B9805D1FB87D550016713B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B9805C1FB87D550016713B /* NotificationCenter.framework */; };
+		A3B980601FB87D550016713B /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B9805F1FB87D550016713B /* TodayViewController.swift */; };
+		A3B980621FB87D550016713B /* ListRowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B980611FB87D550016713B /* ListRowViewController.swift */; };
+		A3B980651FB87D550016713B /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B980631FB87D550016713B /* TodayViewController.xib */; };
+		A3B980681FB87D550016713B /* ListRowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B980661FB87D550016713B /* ListRowViewController.xib */; };
+		A3B9806C1FB87D550016713B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A3B9806A1FB87D550016713B /* InfoPlist.strings */; };
+		A3B980701FB87D550016713B /* ATB WIDGET.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A3B9805A1FB87D550016713B /* ATB WIDGET.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A3B980761FB880FE0016713B /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B980751FB880FE0016713B /* BusStop.swift */; };
+		A3B980781FB906800016713B /* BusDeparture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B980771FB906800016713B /* BusDeparture.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A3B9806E1FB87D550016713B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3B9803B1FB87D290016713B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A3B980591FB87D550016713B;
+			remoteInfo = "ATB WIDGET";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A3B980741FB87D550016713B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A3B980701FB87D550016713B /* ATB WIDGET.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		A32CDF4C1FBB865E00B6A49B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A32CDF501FBB8CC400B6A49B /* ATB WIDGET.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ATB WIDGET.entitlements"; sourceTree = "<group>"; };
 		A3B980431FB87D290016713B /* ATB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3B980461FB87D290016713B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3B980481FB87D290016713B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -21,6 +59,17 @@
 		A3B9804D1FB87D290016713B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A3B9804F1FB87D290016713B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3B980501FB87D290016713B /* ATB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ATB.entitlements; sourceTree = "<group>"; };
+		A3B9805A1FB87D550016713B /* ATB WIDGET.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ATB WIDGET.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3B9805C1FB87D550016713B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		A3B9805F1FB87D550016713B /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		A3B980611FB87D550016713B /* ListRowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowViewController.swift; sourceTree = "<group>"; };
+		A3B980641FB87D550016713B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TodayViewController.xib; sourceTree = "<group>"; };
+		A3B980671FB87D550016713B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ListRowViewController.xib; sourceTree = "<group>"; };
+		A3B980691FB87D550016713B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3B9806B1FB87D550016713B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A3B9806D1FB87D550016713B /* ATB_WIDGET.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ATB_WIDGET.entitlements; sourceTree = "<group>"; };
+		A3B980751FB880FE0016713B /* BusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStop.swift; sourceTree = "<group>"; };
+		A3B980771FB906800016713B /* BusDeparture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusDeparture.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +77,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A32CDF4F1FBB87F500B6A49B /* CoreLocation.framework in Frameworks */,
+				A32CDF4E1FBB87ED00B6A49B /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3B980571FB87D550016713B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A32CDF4D1FBB867600B6A49B /* CoreLocation.framework in Frameworks */,
+				A3B9805D1FB87D550016713B /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				A3B980451FB87D290016713B /* ATB */,
+				A3B9805E1FB87D550016713B /* ATB WIDGET */,
+				A3B9805B1FB87D550016713B /* Frameworks */,
 				A3B980441FB87D290016713B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				A3B980431FB87D290016713B /* ATB.app */,
+				A3B9805A1FB87D550016713B /* ATB WIDGET.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -63,6 +126,32 @@
 			path = ATB;
 			sourceTree = "<group>";
 		};
+		A3B9805B1FB87D550016713B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A32CDF4C1FBB865E00B6A49B /* CoreLocation.framework */,
+				A3B9805C1FB87D550016713B /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A3B9805E1FB87D550016713B /* ATB WIDGET */ = {
+			isa = PBXGroup;
+			children = (
+				A32CDF501FBB8CC400B6A49B /* ATB WIDGET.entitlements */,
+				A3B9805F1FB87D550016713B /* TodayViewController.swift */,
+				A3B980611FB87D550016713B /* ListRowViewController.swift */,
+				A3B980631FB87D550016713B /* TodayViewController.xib */,
+				A3B980661FB87D550016713B /* ListRowViewController.xib */,
+				A3B980691FB87D550016713B /* Info.plist */,
+				A3B9806A1FB87D550016713B /* InfoPlist.strings */,
+				A3B9806D1FB87D550016713B /* ATB_WIDGET.entitlements */,
+				A3B980751FB880FE0016713B /* BusStop.swift */,
+				A3B980771FB906800016713B /* BusDeparture.swift */,
+			);
+			path = "ATB WIDGET";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -73,15 +162,34 @@
 				A3B9803F1FB87D290016713B /* Sources */,
 				A3B980401FB87D290016713B /* Frameworks */,
 				A3B980411FB87D290016713B /* Resources */,
+				A3B980741FB87D550016713B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A3B9806F1FB87D550016713B /* PBXTargetDependency */,
 			);
 			name = ATB;
 			productName = ATB;
 			productReference = A3B980431FB87D290016713B /* ATB.app */;
 			productType = "com.apple.product-type.application";
+		};
+		A3B980591FB87D550016713B /* ATB WIDGET */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3B980711FB87D550016713B /* Build configuration list for PBXNativeTarget "ATB WIDGET" */;
+			buildPhases = (
+				A3B980561FB87D550016713B /* Sources */,
+				A3B980571FB87D550016713B /* Frameworks */,
+				A3B980581FB87D550016713B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ATB WIDGET";
+			productName = "ATB WIDGET";
+			productReference = A3B9805A1FB87D550016713B /* ATB WIDGET.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -96,6 +204,20 @@
 					A3B980421FB87D290016713B = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+					A3B980591FB87D550016713B = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -113,6 +235,7 @@
 			projectRoot = "";
 			targets = (
 				A3B980421FB87D290016713B /* ATB */,
+				A3B980591FB87D550016713B /* ATB WIDGET */,
 			);
 		};
 /* End PBXProject section */
@@ -124,6 +247,16 @@
 			files = (
 				A3B9804B1FB87D290016713B /* Assets.xcassets in Resources */,
 				A3B9804E1FB87D290016713B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3B980581FB87D550016713B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3B980651FB87D550016713B /* TodayViewController.xib in Resources */,
+				A3B9806C1FB87D550016713B /* InfoPlist.strings in Resources */,
+				A3B980681FB87D550016713B /* ListRowViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +272,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A3B980561FB87D550016713B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3B980761FB880FE0016713B /* BusStop.swift in Sources */,
+				A3B980601FB87D550016713B /* TodayViewController.swift in Sources */,
+				A3B980621FB87D550016713B /* ListRowViewController.swift in Sources */,
+				A3B980781FB906800016713B /* BusDeparture.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A3B9806F1FB87D550016713B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A3B980591FB87D550016713B /* ATB WIDGET */;
+			targetProxy = A3B9806E1FB87D550016713B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A3B9804C1FB87D290016713B /* Main.storyboard */ = {
@@ -148,6 +300,30 @@
 				A3B9804D1FB87D290016713B /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A3B980631FB87D550016713B /* TodayViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A3B980641FB87D550016713B /* Base */,
+			);
+			name = TodayViewController.xib;
+			sourceTree = "<group>";
+		};
+		A3B980661FB87D550016713B /* ListRowViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A3B980671FB87D550016713B /* Base */,
+			);
+			name = ListRowViewController.xib;
+			sourceTree = "<group>";
+		};
+		A3B9806A1FB87D550016713B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A3B9806B1FB87D550016713B /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -262,14 +438,18 @@
 		A3B980541FB87D290016713B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = ATB/ATB.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 322VGG888R;
 				INFOPLIST_FILE = ATB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nj.ATB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -277,14 +457,54 @@
 		A3B980551FB87D290016713B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = ATB/ATB.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 322VGG888R;
 				INFOPLIST_FILE = ATB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nj.ATB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		A3B980721FB87D550016713B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "ATB WIDGET/ATB WIDGET.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 322VGG888R;
+				INFOPLIST_FILE = "ATB WIDGET/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "nj.ATB.ATB-WIDGET";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		A3B980731FB87D550016713B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "ATB WIDGET/ATB WIDGET.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 322VGG888R;
+				INFOPLIST_FILE = "ATB WIDGET/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "nj.ATB.ATB-WIDGET";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -306,6 +526,15 @@
 			buildConfigurations = (
 				A3B980541FB87D290016713B /* Debug */,
 				A3B980551FB87D290016713B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3B980711FB87D550016713B /* Build configuration list for PBXNativeTarget "ATB WIDGET" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3B980721FB87D550016713B /* Debug */,
+				A3B980731FB87D550016713B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
