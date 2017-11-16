@@ -156,29 +156,36 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last! as CLLocation
-        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        print(center)
         self.locationManager.stopUpdatingLocation()
         
         getBusStops() { (result) in
             switch result {
             case .success(let stops):
-                var closestBusStop = self.nearestBusStop(stops: stops, currentLocation: location)
-                getBusDeparture(for: closestBusStop!) { (result) in
+                let closestBusStop = self.nearestBusStop(stops: stops, currentLocation: location)
+                let filteredStop = stops.filter { $0.nodeId != closestBusStop?.nodeId }
+                print(stops.count, filteredStop.count);
+                let closeLocation = CLLocation.init(latitude: (closestBusStop?.latitude)!, longitude: (closestBusStop?.longitude)!)
+                let nextCloseStop = self.nearestBusStop(stops: filteredStop, currentLocation: closeLocation)
+                
+                let callback: (Result<DepartureResponse>) -> Void  = { (result) in
                     switch result {
                     case .success(let departuresResponse):
-                        print(departuresResponse)
-                        self.listViewController.contents = departuresResponse.departures
-                        
+                        self.onGetDepartures(departuresResponse: departuresResponse);
                     case .failure(let error):
                         fatalError("error: \(error.localizedDescription)")
                     }
                 }
+                getBusDeparture(for: closestBusStop!,completion: callback)
+                getBusDeparture(for: nextCloseStop!, completion: callback)
             case .failure(let error):
                 fatalError("error: \(error.localizedDescription)")
             }
         }
         
+    }
+    
+    func onGetDepartures(departuresResponse: DepartureResponse) {
+          self.listViewController.contents =  self.listViewController.contents + departuresResponse.departures
     }
     
     func nearestBusStop(stops: [BusStop],  currentLocation: CLLocation) -> BusStop? {
