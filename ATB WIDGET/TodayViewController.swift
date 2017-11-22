@@ -101,7 +101,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
         // content. The NCWidgetListViewController will set the representedObject
         // of this view controller to one of the objects in its contents array.
         self.listRowViewController = ListRowViewController();
-        self.listRowViewController?.departure = self.listViewController.contents[row] as? Departure;
+        self.listRowViewController?.departureResponse = self.listViewController.contents[row] as? DepartureResponse;
         return listRowViewController!;
     }
     
@@ -185,7 +185,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
     }
     
     func onGetDepartures(departuresResponse: DepartureResponse) {
-          self.listViewController.contents =  self.listViewController.contents + departuresResponse.departures
+          self.listViewController.contents.append(departuresResponse)
     }
     
     func nearestBusStop(stops: [BusStop],  currentLocation: CLLocation) -> BusStop? {

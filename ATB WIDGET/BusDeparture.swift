@@ -18,6 +18,7 @@ struct Departure : Codable {
 }
 
 struct DepartureResponse : Codable {
+    var busStop: BusStop?
     var url: String
     var isGoingTowardsCentrum: BooleanLiteralType
     var departures: [Departure]
@@ -58,7 +59,8 @@ func getBusDeparture( for busstop: BusStop, completion: ((Result<DepartureRespon
             let decoder = JSONDecoder()
             
             do {
-                let departures = try decoder.decode(DepartureResponse.self, from: jsonData)
+                var departures = try decoder.decode(DepartureResponse.self, from: jsonData)
+                departures.busStop = busstop
                 completion?(.success(departures))
             } catch {
                 completion?(.failure(error))
