@@ -20,6 +20,8 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
     var locationManager:CLLocationManager!
     
     
+    
+    
     // MARK: - NSViewController
     
     override var nibName: NSNib.Name? {
@@ -29,19 +31,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if (CLLocationManager.locationServicesEnabled())
-        {
-            locationManager = CLLocationManager()
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
-        }
-        
-        
-        
-        // Set up the widget list view controller.
-        // The contents property should contain an object for each row in the list.
-        self.listViewController.contents = []
     }
     
     override func dismissViewController(_ viewController: NSViewController) {
@@ -65,7 +54,17 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
         // refreshed. Pass NCUpdateResultNoData to indicate that nothing has changed
         // or NCUpdateResultNewData to indicate that there is new data since the
         // last invocation of this method.
-        completionHandler(.noData)
+        
+        self.listViewController.contents = []
+        if (CLLocationManager.locationServicesEnabled())
+        {
+            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
+        
+        completionHandler(.newData)
     }
     
     func widgetMarginInsets(forProposedMarginInsets defaultMarginInset: NSEdgeInsets) -> NSEdgeInsets {
@@ -84,7 +83,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
     func widgetDidBeginEditing() {
         // The user has clicked the edit button.
         // Put the list view into editing mode.
-        self.listViewController.editing = true
+        self.listViewController.editing = false
     }
     
     func widgetDidEndEditing() {
@@ -163,7 +162,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
             case .success(let stops):
                 let closestBusStop = self.nearestBusStop(stops: stops, currentLocation: location)
                 let filteredStop = stops.filter { $0.nodeId != closestBusStop?.nodeId }
-                print(stops.count, filteredStop.count);
                 let closeLocation = CLLocation.init(latitude: (closestBusStop?.latitude)!, longitude: (closestBusStop?.longitude)!)
                 let nextCloseStop = self.nearestBusStop(stops: filteredStop, currentLocation: closeLocation)
                 
@@ -185,7 +183,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
     }
     
     func onGetDepartures(departuresResponse: DepartureResponse) {
-          self.listViewController.contents.append(departuresResponse)
+        self.listViewController.contents.append(departuresResponse)
     }
     
     func nearestBusStop(stops: [BusStop],  currentLocation: CLLocation) -> BusStop? {
