@@ -94,6 +94,7 @@ extension ListRowViewController: NSTableViewDataSource, NSTableViewDelegate {
         
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: nil) as? NSTableCellView {
             cell.textField?.stringValue = text
+            cell.alphaValue = item.isRealtimeData ? 1 : 0.5
             return cell
         }
         return nil

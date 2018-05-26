@@ -10,27 +10,26 @@ import Cocoa
 import NotificationCenter
 import CoreLocation
 
-class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListViewDelegate, NCWidgetSearchViewDelegate, CLLocationManagerDelegate {
+class WidgetListViewController: NSViewController, NCWidgetProviding, NCWidgetListViewDelegate, NCWidgetSearchViewDelegate {
     
     @IBOutlet var listViewController: NCWidgetListViewController!
     var searchController: NCWidgetSearchViewController?
     
     var listRowViewController: ListRowViewController?
     
-    var locationManager:CLLocationManager!
-    
-    
     
     
     // MARK: - NSViewController
     
     override var nibName: NSNib.Name? {
-        return NSNib.Name("TodayViewController")
+        return NSNib.Name("WidgetListViewController")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // Set up the widget list view controller.
+        // The contents property should contain an object for each row in the list.
+        self.listViewController.contents = []
     }
     
     override func dismissViewController(_ viewController: NSViewController) {
@@ -54,17 +53,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
         // refreshed. Pass NCUpdateResultNoData to indicate that nothing has changed
         // or NCUpdateResultNewData to indicate that there is new data since the
         // last invocation of this method.
-        
-        self.listViewController.contents = []
-        if (CLLocationManager.locationServicesEnabled())
-        {
-            locationManager = CLLocationManager()
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
-        }
-        
-        completionHandler(.newData)
+        completionHandler(.noData)
     }
     
     func widgetMarginInsets(forProposedMarginInsets defaultMarginInset: NSEdgeInsets) -> NSEdgeInsets {
@@ -83,7 +72,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
     func widgetDidBeginEditing() {
         // The user has clicked the edit button.
         // Put the list view into editing mode.
-        self.listViewController.editing = false
+        self.listViewController.editing = true
     }
     
     func widgetDidEndEditing() {
@@ -100,7 +89,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
         // content. The NCWidgetListViewController will set the representedObject
         // of this view controller to one of the objects in its contents array.
         self.listRowViewController = ListRowViewController();
-        self.listRowViewController?.departureResponse = self.listViewController.contents[row] as? DepartureResponse;
+        self.listRowViewController?.departure = self.listViewController.contents[row] as? Departure;
         return listRowViewController!;
     }
     
@@ -151,70 +140,4 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
         // The user has selected a search result from the list.
     }
     
-    // MARK: - Location Code
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last! as CLLocation
-        self.locationManager.stopUpdatingLocation()
-        
-        getBusStops() { (result) in
-            switch result {
-            case .success(let stops):
-                let closestBusStop = self.nearestBusStop(stops: stops, currentLocation: location)
-                self.getDepartureForBusStops(stops: stops, closestBusStop: closestBusStop!, numberOfnearStopsToGet: 5);
-            case .failure(let error):
-                fatalError("error: \(error.localizedDescription)")
-            }
-        }
-        
-    }
-    
-    func getDepartureForBusStops(stops:[BusStop], closestBusStop: BusStop, numberOfnearStopsToGet: Int) {
-        
-        let callback: (Result<DepartureResponse>) -> Void  = { (result) in
-            switch result {
-            case .success(let departuresResponse):
-                self.onGetDepartures(departuresResponse: departuresResponse);
-            case .failure(let error):
-                fatalError("error: \(error.localizedDescription)")
-            }
-        }
-        getBusDeparture(for: closestBusStop,completion: callback)
-        var counter = numberOfnearStopsToGet;
-        var closest = closestBusStop
-        var filteredStops = stops;
-        while counter != 0 {
-             filteredStops = filteredStops.filter { $0.nodeId != closest.nodeId }
-            let closeLocation = CLLocation.init(latitude: (closest.latitude), longitude: (closest.longitude))
-            let nextCloseStop = self.nearestBusStop(stops: filteredStops, currentLocation: closeLocation)
-            getBusDeparture(for: nextCloseStop!, completion: callback)
-            closest = nextCloseStop!
-            counter = counter - 1
-        }
-        
-        
-    }
-    
-    func onGetDepartures(departuresResponse: DepartureResponse) {
-        self.listViewController.contents.append(departuresResponse)
-    }
-    
-    func nearestBusStop(stops: [BusStop],  currentLocation: CLLocation) -> BusStop? {
-        if stops.count == 0 {
-            return nil
-        }
-        
-        var closestLocation: BusStop?
-        var smallestDistance: CLLocationDistance?
-        
-        for stop in stops {
-            let location = CLLocation.init(latitude: stop.latitude, longitude: stop.longitude)
-            let distance = currentLocation.distance(from: location)
-            if smallestDistance == nil || distance < smallestDistance! {
-                closestLocation = stop
-                smallestDistance = distance
-            }
-        }
-        return closestLocation
-    }
 }
