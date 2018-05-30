@@ -32,7 +32,6 @@ func getBusDeparture( for busstop: BusStop, completion: ((Result<DepartureRespon
     urlComponents.path = "/api/v1/departures/" + String(busstop.nodeId)
     guard let url = urlComponents.url else { fatalError("Could not create URL from components") }
     
-    print (urlComponents.url)
     var request = URLRequest(url: url)
     request.httpMethod = "GET"
     
